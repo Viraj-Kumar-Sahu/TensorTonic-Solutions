@@ -1,9 +1,8 @@
 import numpy as np
 
 def minmax_scale(X, axis, eps=1e-12):
-    X = np.array(X, dtype=float)
+    x = np.array(X,dtype=float)
+    mini = np.min(x,axis=axis,keepdims=True)
+    maxi = np.max(x,axis=axis,keepdims=True)
 
-    mn = np.min(X, axis=axis, keepdims=True)
-    mx = np.max(X, axis=axis, keepdims=True)
-
-    return (X - mn) / (mx - mn + eps)
+    return ((x - mini) / (maxi - mini + eps))
